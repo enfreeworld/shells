@@ -1,0 +1,20 @@
+#!/usr/bin/python
+
+import  socket, struct, sys, time
+TIME1970 = 2208988800L
+client = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+data = '\x1b' + 47 * '\0'
+
+try:
+	sntp = sys.argv[1]
+except IndexError:
+	sntp = "202.120.2.101"
+
+client.sendto(data, (sntp, 123))
+data, address = client.recvfrom(1024)
+if data:
+	print 'Response received from:', address
+	t = struct.unpack('!12I', data)[10]
+	t -= TIME1970
+	print '\tTime=%s' % time.ctime(t)
+
