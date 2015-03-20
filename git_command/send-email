@@ -1,0 +1,1 @@
+git send-email --to=jianhui.chen@jhlinux.com --smtp-server=smtp.163.com --smtp-encryption=ssl --smtp-server-port=465 --smtp-user=enfreeworld@163.com --smtp-pass="cjh0507lcy0210" ver1..ver2
